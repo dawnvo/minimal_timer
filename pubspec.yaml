@@ -1,0 +1,30 @@
+name: minimal_timer
+description: A new Flutter project.
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.6 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  equatable: ^2.0.5
+  flutter_svg: ^2.0.7
+  flutter_riverpod: ^2.4.0
+  flutter_launcher_icons: ^0.13.1
+  # google_mobile_ads: ^3.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/arrow-up-down.svg
+  fonts:
+    - family: Pretendard
+      fonts:
+        - asset: assets/pretendard-light.otf
