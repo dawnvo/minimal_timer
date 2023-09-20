@@ -1,9 +1,11 @@
 import 'dart:math' as math;
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:minimal_timer/alert_dialog.dart';
 import 'package:minimal_timer/configs/assets.dart';
 import 'package:minimal_timer/providers/selected_duration.dart';
 import 'package:minimal_timer/screens/timer_screen.dart';
@@ -50,26 +52,9 @@ class HomeScreen extends ConsumerWidget {
   }
 
   Future<bool> _handleBackPressed(BuildContext context) async {
-    final exitConfirmed = await showDialog<bool>(
+    final exitConfirmed = await showCupertinoDialog(
       context: context,
-      // builder: (ctx) => const AdNativeBanner(),
-      builder: (ctx) => Column(children: [
-        Container(
-          color: Colors.red,
-          width: 500,
-          height: 400,
-        ),
-        Row(children: [
-          TextButton(
-            onPressed: () => SystemNavigator.pop(),
-            child: const Text('종료'),
-          ),
-          TextButton(
-            onPressed: () => Navigator.pop(context, false),
-            child: const Text('취소'),
-          ),
-        ]),
-      ]),
+      builder: (ctx) => const DisplayOnAppExit(),
     );
 
     return exitConfirmed ?? false;

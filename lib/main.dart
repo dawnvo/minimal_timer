@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:minimal_timer/configs/colors.dart';
 import 'package:minimal_timer/screens/home_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  MobileAds.instance.initialize();
+
   runApp(const ProviderScope(child: App()));
 }
 
@@ -14,7 +18,6 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Minimal Timer',
-      themeMode: ThemeMode.dark,
       theme: ThemeData(
         useMaterial3: true,
         fontFamily: 'Pretendard',
