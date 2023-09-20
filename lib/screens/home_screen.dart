@@ -2,14 +2,13 @@ import 'dart:math' as math;
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:minimal_timer/widgets/display_on_app_exit_dialog.dart';
 import 'package:minimal_timer/configs/assets.dart';
 import 'package:minimal_timer/providers/selected_duration.dart';
 import 'package:minimal_timer/screens/timer_screen.dart';
 import 'package:minimal_timer/widgets/circular_progress_painter.dart';
+import 'package:minimal_timer/widgets/display_on_app_exit_dialog.dart';
 import 'package:minimal_timer/widgets/layout.dart';
 import 'package:minimal_timer/widgets/timer_button.dart';
 import 'package:minimal_timer/widgets/timer_display.dart';
