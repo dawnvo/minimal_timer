@@ -17,13 +17,17 @@ class Layout extends StatelessWidget {
     return Scaffold(
       backgroundColor: colorScheme.background,
       body: SingleChildScrollView(
-        child: Column(children: [
-          SizedBox(
-            height: mediaQuery.size.height / 1.2,
-            child: Center(child: timer),
-          ),
-          button,
-        ]),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(20.0),
+              height: mediaQuery.size.height * (4 / 5),
+              child: Center(child: timer),
+            ),
+            button,
+          ],
+        ),
       ),
     );
   }

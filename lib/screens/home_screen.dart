@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:minimal_timer/alert_dialog.dart';
+import 'package:minimal_timer/widgets/display_on_app_exit_dialog.dart';
 import 'package:minimal_timer/configs/assets.dart';
 import 'package:minimal_timer/providers/selected_duration.dart';
 import 'package:minimal_timer/screens/timer_screen.dart';
@@ -13,6 +13,7 @@ import 'package:minimal_timer/widgets/circular_progress_painter.dart';
 import 'package:minimal_timer/widgets/layout.dart';
 import 'package:minimal_timer/widgets/timer_button.dart';
 import 'package:minimal_timer/widgets/timer_display.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen();
@@ -21,6 +22,12 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedDuration = ref.watch(selectedDurationProvider);
     final selectedSeconds = ref.watch(selectedSecondsProvider);
+
+    final displayGap = getValueForScreenType<double>(
+      context: context,
+      watch: 0.0,
+      mobile: 16.0,
+    );
 
     return WillPopScope(
       onWillPop: () => _handleBackPressed(context),
@@ -38,7 +45,7 @@ class HomeScreen extends ConsumerWidget {
               children: [
                 const SizedBox(height: _TimeUnitSwitch.height),
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: EdgeInsets.all(displayGap),
                   child: TimerDisplay(seconds: selectedSeconds),
                 ),
                 const _TimeUnitSwitch(),
@@ -54,7 +61,7 @@ class HomeScreen extends ConsumerWidget {
   Future<bool> _handleBackPressed(BuildContext context) async {
     final exitConfirmed = await showCupertinoDialog(
       context: context,
-      builder: (ctx) => const DisplayOnAppExit(),
+      builder: (ctx) => const DisplayOnAppExitDialog(),
     );
 
     return exitConfirmed ?? false;

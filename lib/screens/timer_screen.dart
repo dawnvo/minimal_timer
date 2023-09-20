@@ -7,6 +7,7 @@ import 'package:minimal_timer/widgets/circular_progress_painter.dart';
 import 'package:minimal_timer/widgets/layout.dart';
 import 'package:minimal_timer/widgets/timer_button.dart';
 import 'package:minimal_timer/widgets/timer_display.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class TimerScreen extends ConsumerWidget {
   const TimerScreen();
@@ -66,28 +67,33 @@ class _ControlButtons extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final timerState = ref.watch(timerProvider);
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
+    final buttons = [
+      TimerButton(
+        onPressed: () => ref.read(timerProvider.notifier).cancel(),
+        isSecondary: true,
+        child: const Text('취소'),
+      ),
+      const SizedBox(width: 24, height: 16),
+      if (!timerState.isPaused)
         TimerButton(
-          onPressed: () => ref.read(timerProvider.notifier).cancel(),
-          isSecondary: true,
-          child: const Text('취소'),
-        ),
-        const SizedBox(width: 40),
-        if (!timerState.isPaused)
-          TimerButton(
-            onPressed: () => ref.read(timerProvider.notifier).pause(),
-            isSecondary: true,
-            isDestructiveAction: true,
-            child: const Text('일시정지'),
-          )
-        else
-          TimerButton(
-            onPressed: () => ref.read(timerProvider.notifier).restart(),
-            child: const Text('계속'),
-          )
-      ],
+          onPressed: () => ref.read(timerProvider.notifier).pause(),
+          // isSecondary: true,
+          isDestructiveAction: true,
+          child: const Text('일시정지'),
+        )
+      else
+        TimerButton(
+          onPressed: () => ref.read(timerProvider.notifier).restart(),
+          child: const Text('계속'),
+        )
+    ];
+
+    return ScreenTypeLayout.builder(
+      watch: (ctx) => Column(children: buttons.reversed.toList()),
+      mobile: (ctx) => Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: buttons,
+      ),
     );
   }
 }

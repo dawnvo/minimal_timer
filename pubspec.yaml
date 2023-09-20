@@ -1,7 +1,7 @@
 name: minimal_timer
 description: A new Flutter project.
 publish_to: "none"
-version: 1.0.0+1
+version: 1.0.1+2
 
 environment:
   sdk: ">=3.0.6 <4.0.0"
@@ -14,6 +14,7 @@ dependencies:
   flutter_riverpod: ^2.4.0
   flutter_launcher_icons: ^0.13.1
   google_mobile_ads: ^3.0.0
+  responsive_builder: ^0.7.0
 
 dev_dependencies:
   flutter_test:

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class TimerDisplay extends StatelessWidget {
   const TimerDisplay({required this.seconds});
@@ -8,12 +9,17 @@ class TimerDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final fontSize = getValueForScreenType<double>(
+      context: context,
+      watch: 60.0,
+      mobile: 80.0,
+    );
 
     // * 60초 이하일 경우
     if (seconds <= 60) {
       return Text(
         seconds.toString(),
-        style: const TextStyle(fontSize: 80),
+        style: TextStyle(fontSize: fontSize),
       );
     }
     // * 60초 이상일 경우
@@ -28,7 +34,7 @@ class TimerDisplay extends StatelessWidget {
         children: [
           Text(
             minutesLeft.toString(),
-            style: const TextStyle(fontSize: 80),
+            style: TextStyle(fontSize: fontSize),
           ),
           Text(
             // * 10초 이하 포맷; 09... 08... 07... 06...

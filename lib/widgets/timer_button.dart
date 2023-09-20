@@ -27,7 +27,7 @@ class TimerButton extends ConsumerWidget {
         style: FilledButton.styleFrom(
           fixedSize: buttonSize,
           textStyle: theme.textTheme.bodyLarge,
-          backgroundColor: buttonColor.withOpacity(0.4),
+          backgroundColor: buttonColor.withOpacity(0.6),
         ),
         onPressed: onPressed,
         child: child,
@@ -37,7 +37,7 @@ class TimerButton extends ConsumerWidget {
         style: OutlinedButton.styleFrom(
           fixedSize: buttonSize,
           textStyle: theme.textTheme.bodyLarge,
-          side: BorderSide(color: buttonColor.withOpacity(0.4)),
+          side: BorderSide(color: buttonColor.withOpacity(0.8)),
           foregroundColor: buttonColor,
         ),
         onPressed: onPressed,

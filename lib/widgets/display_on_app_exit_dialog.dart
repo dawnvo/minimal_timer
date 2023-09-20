@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-class DisplayOnAppExit extends StatefulWidget {
-  const DisplayOnAppExit();
+class DisplayOnAppExitDialog extends StatefulWidget {
+  const DisplayOnAppExitDialog();
 
   @override
-  DisplayOnAppExitState createState() => DisplayOnAppExitState();
+  DisplayOnAppExitDialogState createState() => DisplayOnAppExitDialogState();
 }
 
-class DisplayOnAppExitState extends State<DisplayOnAppExit> {
+class DisplayOnAppExitDialogState extends State<DisplayOnAppExitDialog> {
   NativeAd? _nativeAd;
   bool _nativeAdIsLoaded = false;
 
@@ -20,6 +20,8 @@ class DisplayOnAppExitState extends State<DisplayOnAppExit> {
       ? "ca-app-pub-3368479970508752/2376612907"
       // Develop
       : "ca-app-pub-3940256099942544/2247696110";
+
+  // final String _adUnitId = "ca-app-pub-3940256099942544/2247696110";
 
   @override
   void initState() {
